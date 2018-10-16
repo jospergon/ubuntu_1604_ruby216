@@ -1,0 +1,6 @@
+version: '3.4'
+services:
+  test:
+    tty: true
+    stdin_open: true
+    build: .
