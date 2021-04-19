@@ -7,7 +7,7 @@ RUN apt-get install -y git wget curl rsync bc apt-transport-https libxml2 libxml
 RUN apt-get install -y gawk libreadline6-dev libyaml-dev autoconf libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
 RUN apt-get install -y libmysqlclient-dev libmagickwand-dev imagemagick
 RUN apt-get install -y nodejs mysql-client vim qt5-default libqt5webkit5-dev xvfb dbus-x11 gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x xfonts-base xfonts-75dpi
-RUN apt-get install -y unzip netcat libgconf-2-4
+RUN apt-get install -y unzip netcat libgconf-2-4 poppler-utils
 
 RUN curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /chrome.deb
 RUN dpkg -i /chrome.deb || apt-get install -yf
