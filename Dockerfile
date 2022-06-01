@@ -1,5 +1,15 @@
 FROM ubuntu:16.04
 
+# Set timezone 'Europe/Brussels'
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ 'Europe/Brussels'
+RUN echo $TZ > /etc/timezone && \
+apt-get update && apt-get install -y tzdata && \
+rm /etc/localtime && \
+ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+dpkg-reconfigure -f noninteractive tzdata && \
+apt-get clean
+
 RUN apt-get -y update
 
 RUN apt-get install -y build-essential sudo
@@ -13,7 +23,7 @@ RUN curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 RUN dpkg -i /chrome.deb || apt-get install -yf
 RUN rm /chrome.deb
 
-RUN wget https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip
+RUN wget https://chromedriver.storage.googleapis.com/102.0.5005.61/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip
 RUN mv chromedriver /usr/local/bin/
 RUN chmod +x /usr/local/bin/chromedriver
